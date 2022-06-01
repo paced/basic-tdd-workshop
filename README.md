@@ -1,24 +1,67 @@
-# base
-
-> **Warning**: This repository is not ready for use and should be ignored for now.
+# Global Message
 
 ## Introduction
 
-> Describe the "why" of your GitHub project here.
+Global Message is a simple message, form, and submit button. The message will read whatever the server has currently 
+stored whenever you refresh the page. Anybody in the world can submit to the form and change what the message says 
+the next time you refresh the page.
 
-Base template for all repositories without a better template.
+The frontend is a NextJS-rendered static web page. The backend is an ExpressJS RESTful API with two endpoints:
+
+- GET `/api/v1/read`: Read the message
+
+The response is simply text:
+
+```txt
+Hello, World!
+```
+
+- POST `/api/v1/write`: Write the message
+
+The payload is JSON and is expected to have the general form:
+
+```json
+{
+  "message": "<some_message>"
+}
+```
+
+> **Note**: For this demonstration we are focusing only on TDD: don't worry about non-functional requirements right 
+> now, including the validation of user input.
+
+## Workshop Task
+
+> Heavy Googling may be required for all tasks.
+
+The current state of the project:
+
+- The frontend is completed.
+- The backend has been partially stubbed and doesn't do anything.
+
+### Task 1
+
+> Hint: you can either read/write files before you run your assertions, or you can use Sinon to mock the file system.
+
+Implement the backend feature to read a message using the existing stub, writing a test first. Then, implement the 
+backend feature to write a message: the function and the route handling by using Test Driven Development (TDD) 
+principles.
+
+## Task 2
+
+Modify the React app such that the message immediately changes to what you have written once you click "Send", also 
+by utilising a TDD approach. Your approach should _not_ call the backend server (i.e., the test must be able to run 
+without the backend running) by utilising the provided mock library (Sinon).
+
+---
+
+Good luck and have fun!
 
 ## Build Instructions
 
-Describe exactly how to build this project from scratch.
+The frontend is in the `ui/` directory, and the backend is in `api/`. Both are Node 16 projects.
 
-## Deploy
-
-Describe at least how _you_ are deploying this project, so you can do it again.
-
-## To-Do
-
-- [ ] **Check the license!**
-- [ ] Finish/edit this README file.
-- [ ] Familiarise yourself with [Inkling Flow](https://github.com/teaminkling/flow).
-- [ ] Add/edit any and all badges associated with this project.
+```shell
+npm install
+npm run build
+npm run dev
+```
