@@ -26,8 +26,7 @@ The payload is JSON and is expected to have the general form:
 }
 ```
 
-> **Note**: For this demonstration we are focusing only on TDD: don't worry about non-functional requirements right 
-> now, including the validation of user input.
+And the server will send an empty 201 response on success, a 500 if the request fails.
 
 ## Workshop Task
 
@@ -36,17 +35,21 @@ The payload is JSON and is expected to have the general form:
 The current state of the project:
 
 - The frontend is completed.
-- The backend has been partially stubbed and doesn't do anything.
+  - But it is missing a Jest test for the refresh of the component.
+- The backend has been partially stubbed (read) and incomplete.
+  - The "write" routine isn't even considered in it yet.
 
-### Task 1
+### Task 1 and 2
 
-> Hint: you can either read/write files before you run your assertions, or you can use Sinon to mock the file system.
+> Hint: use Sinon to mock the file system rather than reading files.
 
 Implement the backend feature to read a message using the existing stub, writing a test first. Then, implement the 
 backend feature to write a message: the function and the route handling by using Test Driven Development (TDD) 
 principles.
 
-## Task 2
+## Task 3 and 4
+
+Add a test after the fact for reading from the server on page refresh.
 
 Modify the React app such that the message immediately changes to what you have written once you click "Send", also 
 by utilising a TDD approach. Your approach should _not_ call the backend server (i.e., the test must be able to run 
